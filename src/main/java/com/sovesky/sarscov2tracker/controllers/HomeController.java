@@ -20,8 +20,11 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model m){
         List<LocationStats> listOfLocationStats = service.getAllStats();
+        int totalReportedCases = listOfLocationStats.stream().mapToInt(LocationStats::getLatestTotalCases).sum();
+        int totalNewCases = listOfLocationStats.stream().mapToInt(LocationStats::getDiffFromPrevDay).sum();
         m.addAttribute("locationStats", listOfLocationStats);
-        m.addAttribute("totalReportedCases", listOfLocationStats.stream().mapToInt(LocationStats::getLatestTotalCases).sum());
+        m.addAttribute("totalReportedCases", totalReportedCases);
+        m.addAttribute("totalNewCases", totalNewCases);
         return "home";
     }
 }

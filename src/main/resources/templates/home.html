@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/x-icon" data-th-href="@{/resources/images/Virus_Corona-512.png}">
+    <script src="extensions/multiple-sort/bootstrap-table-multiple-sort.js"></script>
 </head>
 
 <body>
@@ -26,9 +27,14 @@
 <div class="jumbotron">
     <h1 class="display-4" data-th-text="${totalReportedCases}">Total Cases</h1>
     <p class="lead">Total cases reported as of today</p>
+    <hr class="my-4">
+    <p>
+        <span>New cases reported since previous day update: </span>
+        <span data-th-text="${totalNewCases}">0</span>
+    </p>
 </div>
 
-<table class="table table-hover table-striped">
+<table class="table table-sm table-hover table-striped">
     <thead class="thead-dark">
     <tr>
         <th scope="col">#</th>
